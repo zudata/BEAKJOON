@@ -45,3 +45,25 @@ def isPrime(num):
 m, n = map(int, input().split())
 for j in range(m, n+1):
     if isPrime(j): print(j)
+
+# 4948
+def isPrime(num):
+    if num==1:
+        return 0
+    else:
+        for i in range(2, int(num**0.5)+1):
+            if num%i == 0:
+                return 0
+        return 1
+k = 123456*2+1
+l = [1]*k
+for i in range(k):
+    l[i-1] = isPrime(i)
+
+while True:
+    n = int(input())
+    count = 0
+    if n == 0: break
+    for i in range(n+1, 2*n+1):
+        count += l[i-1]
+    print(count)
