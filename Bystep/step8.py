@@ -67,3 +67,29 @@ while True:
     for i in range(n+1, 2*n+1):
         count += l[i-1]
     print(count)
+
+# 9020
+def isPrime(num):
+    if num==1:
+        return 0
+    else:
+        for i in range(2, int(num**0.5)+1):
+            if num%i == 0:
+                return 0
+        return 1
+l = []
+for i in range(10000):
+    if isPrime(i): l.append(i)
+
+t = int(input())
+for i in range(t):
+    n = int(input())
+    if n % 2 == 0:
+        for j in range(2*n):
+            if (n/2+j in l) and (n/2-j in l): print(int(n/2-j), int(n/2+j)); break
+    else:
+        for j in range(2*n):
+            if ((n-1)/2+j+1 in l) and ((n-1)/2-j in l):
+                print(int((n-1)/2-j), int((n-1)/2+j+1)); break
+            elif ((n-1)/2+j in l) and ((n-1)/2-j+1 in l):
+                print(int((n-1)/2-j+1), int((n-1)/2+j)); break
