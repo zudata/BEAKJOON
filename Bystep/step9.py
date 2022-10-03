@@ -35,3 +35,27 @@ n, k = map(int, input().split())
 l = list(map(int, input().split()))
 l.sort()
 print(l[n-k])
+
+# 2108
+import sys
+inputs = sys.stdin.readline
+n = int(inputs())
+c = [0]*8001; l = []; ll = []
+for i in range(n):
+    m = int(inputs())
+    c[4000+m] += 1
+    l.append(m)
+for j in range(8001): #최빈값
+    if c[j] == max(c): ll.append(j - 4000)
+if len(ll) == 1: a3 = ll[0]
+else:
+    ll.remove(min(ll))
+    a3 = min(ll)
+a1 = round(sum(l)/n) #산술평균
+a4 = max(l) - min(l) #범위
+l.sort()
+a2 = l[int(n/2)] #중앙값
+print(a1)
+print(a2)
+print(a3)
+print(a4)
