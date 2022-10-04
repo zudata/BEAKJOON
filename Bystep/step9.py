@@ -59,3 +59,23 @@ print(a1)
 print(a2)
 print(a3)
 print(a4)
+
+# 1427
+import sys
+inputs = sys.stdin.readline
+n = list(map(int,inputs()))
+n.sort(reverse = True)
+for i in n:
+    print(i, end='')
+
+# 11650
+import sys
+inputs = sys.stdin.readline
+l = []
+n = int(inputs())
+for i in range(n):
+    (x, y) = map(int, inputs().split())
+    l.append((x, y))
+l.sort()
+for j in l:
+    print(j[0], j[1])
