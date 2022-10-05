@@ -79,3 +79,26 @@ for i in range(n):
 l.sort()
 for j in l:
     print(j[0], j[1])
+
+# 11651
+import sys
+inputs = sys.stdin.readline
+l = []
+n = int(inputs())
+for i in range(n):
+    (x, y) = map(int, inputs().split())
+    l.append((y, x))
+l.sort()
+for j in l:
+    print(j[1], j[0])
+
+# 1181
+l = []
+n = int(input())
+for i in range(n):
+    word = input()
+    l.append((len(word), word))
+l = list(set(l))
+l.sort()
+for j in l:
+    print(j[1])
