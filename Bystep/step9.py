@@ -102,3 +102,24 @@ l = list(set(l))
 l.sort()
 for j in l:
     print(j[1])
+
+# 10814
+l = []
+n = int(input())
+for i in range(n):
+    num, word = input().split()
+    l.append((int(num), i, word))
+l.sort()
+for j in l:
+    print(j[0], j[2])
+
+# 18870
+import sys
+inputs = sys.stdin.readline
+n = int(inputs())
+x = list(map(int, inputs().split()))
+l = list(set(x))
+l.sort()
+dict = {l[i]:i for i in range(len(l))}
+for j in x:
+    print(dict[j], end=' ')
