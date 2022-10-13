@@ -30,16 +30,19 @@ for i in range(n):
     txt = input()
     print(isPalindrome(txt)[0], isPalindrome(txt)[1])
 
-# 24060 ?????
+# 24060
 def merge_sort(l, p, r):
-    if p < r:
-        q = (p+r)//2 # q는 p, r의 중간 지점
-        merge_sort(l, p, q) # 전반부 정렬
-        merge_sort(l, q+1, r) # 후반부 정렬
-        merge(l, p, q, r) # 병합
+    if p < r and c <= k:
+        q = (p+r)//2
+        merge_sort(l, p , q)
+        merge_sort(l, q+1, r)
+        merge(l, p, q, r)
+        
 def merge(l, p, q, r):
-    global c
-    i = p; j = q; t = 1; tmp = []
+    global c, res
+    i = p; j = q+1
+    tmp = []
+    
     while i <= q and j <= r:
         if l[i] <= l[j]:
             tmp.append(l[i])
@@ -47,23 +50,32 @@ def merge(l, p, q, r):
         else:
             tmp.append(l[j])
             j += 1
-    while i <= q:  # 왼쪽 배열 부분이 남은 경우
+        
+    while i <= q:
         tmp.append(l[i])
         i += 1
-    while j <= r:  # 오른쪽 배열 부분이 남은 경우
+    
+    while j <= r:
         tmp.append(l[j])
-        i = p; t = 0
-    while i <= r:  # 결과를 A[p..r]에 저장
+        j += 1
+    
+    i = p; t = 0
+    
+    while i <= r:
         l[i] = tmp[t]
         c += 1
         if c == k:
-            print(l[i])
-            sys.exit()
-        i += 1; t += 1
+            res = l[i]
+            break
+        i += 1
+        t += 1
 
 n, k = map(int, input().split())
 l = list(map(int, input().split()))
-merge_sort(l, 0, n-1)
+c = 0
+res = -1
+merge_sort(l, 0, n - 1)
+print(res)
 
 # 2447
 def star(n):
