@@ -19,3 +19,15 @@ for i in range(1, n+1):
         res = i
         break
 print(res)
+
+# 7568
+l = [list(map(int, input().split())) for i in range (int(input()))]
+rank = [0]*len(l)
+for i in range(len(l)):
+    r = 1
+    x,y = l[i]
+    for j in l:
+        if j[0] > x and j[1] > y:
+            r += 1
+    rank[i] = str(r)
+print(" ".join(rank))
