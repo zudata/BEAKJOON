@@ -31,3 +31,25 @@ for i in range(len(l)):
             r += 1
     rank[i] = str(r)
 print(" ".join(rank))
+
+# 1018
+n, m = map(int, input().split())
+b = []
+for i in range(n):
+    b.append(input())
+wc = "WB"*4 + "BW"*4
+bc = "BW"*4 + "WB"*4
+min = 2174000
+for r in range(n-7):
+    for c in range(m-7):
+        c1 = 0; c2 = 0; sec = ""
+        for row in b[r:r+8]:
+            sec += row[c:c+8]
+            if len(sec) == 16:
+                for i in range(16):
+                    if sec[i] != wc[i]: c1 += 1
+                    elif sec[i] != bc[i]: c2 += 1
+                sec = ""
+        if c1 <= c2 and c1 < min: min = c1
+        elif c2 < c1 and c2 < min: min = c2
+print(min)
