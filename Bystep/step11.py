@@ -53,3 +53,10 @@ for r in range(n-7):
         if c1 <= c2 and c1 < min: min = c1
         elif c2 < c1 and c2 < min: min = c2
 print(min)
+
+# 1436
+nums = []
+for num in range(666, 2700000):
+    if '666' in str(num): nums.append(int(num))
+nums.sort()
+print(nums[int(input())-1])
