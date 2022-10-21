@@ -19,3 +19,16 @@ for j in range(m):
 for k in ll:
     if k in l: count += 1
 print(count)
+
+# 1620
+import sys
+inputs = sys.stdin.readline
+n, m = map(int, inputs().split())
+l = {}; ll = {}
+for i in range(n):
+    txt =  inputs().strip()
+    l[i+1] = txt; ll[txt] = i+1
+for j in range(m):
+    q = inputs().strip()
+    try: print(l[int(q)])
+    except: print(ll[q])
