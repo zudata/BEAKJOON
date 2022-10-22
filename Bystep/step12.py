@@ -32,3 +32,17 @@ for j in range(m):
     q = inputs().strip()
     try: print(l[int(q)])
     except: print(ll[q])
+
+# 10816
+import sys
+inputs = sys.stdin.readline
+n = int(inputs())
+l = list(map(int, inputs().split()))
+dic = {}
+for elem in l:
+    dic[elem] = dic.get(elem, 0) + 1
+m = int(inputs())
+ll = list(map(int, input().split()))
+for j in range(m):
+    try: print(dic[ll[j]], end = ' ')
+    except: print(0, end = ' ')
