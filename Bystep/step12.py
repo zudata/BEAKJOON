@@ -46,3 +46,16 @@ ll = list(map(int, input().split()))
 for j in range(m):
     try: print(dic[ll[j]], end = ' ')
     except: print(0, end = ' ')
+
+# 1764
+import sys
+inputs = sys.stdin.readline
+n, m = map(int, inputs().split())
+l = set(); ll = set()
+for i in range(n):
+    l.add(inputs().strip())
+for j in range(m):
+    ll.add(inputs().strip())
+res = list(sorted(l.intersection(ll)))
+print(len(res))
+print('\n'.join(res))
