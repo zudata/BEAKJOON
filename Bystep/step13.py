@@ -59,3 +59,15 @@ for j in range(m):
 res = list(sorted(l.intersection(ll)))
 print(len(res))
 print('\n'.join(res))
+
+# 1269
+import sys
+inputs = sys.stdin.readline
+n, m = map(int, inputs().split())
+a = set(map(int, inputs().split()))
+b = set(map(int, inputs().split()))
+# ins = a.intersection(b)
+# uni = a.union(b)
+# res = uni.difference(ins)
+res = a.symmetric_difference(b)
+print(len(res))
