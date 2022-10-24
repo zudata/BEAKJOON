@@ -71,3 +71,14 @@ b = set(map(int, inputs().split()))
 # res = uni.difference(ins)
 res = a.symmetric_difference(b)
 print(len(res))
+
+# 11478
+import sys
+inputs = sys.stdin.readline
+txt = inputs().strip()
+n = len(txt); words = set()
+for i in range(n):
+    for j in range(1, n+1):
+        word = txt[i:i+j]
+        if word != '': words.add(word)
+print(len(words))
