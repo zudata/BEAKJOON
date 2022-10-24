@@ -1,61 +1,62 @@
-# 10815
-import sys
-inputs = sys.stdin.readline
-n = int(inputs())
-l = set(map(int, inputs().split()))
-m = int(inputs())
-ll = list(map(int, inputs().split()))
-for i in ll:
-    if i in l: print(1, end = ' ')
-    else: print(0, end = ' ')
-
-# 14425
+# 2798
 n, m = map(int, input().split())
-ll = []; l = set(); count = 0
+card = list(map(int, input().split()))
+res = 0
 for i in range(n):
-    l.add(input())
-for j in range(m):
-    ll.append(input())
-for k in ll:
-    if k in l: count += 1
-print(count)
+    for j in range(i+1, n):
+        for k in range(j+1, n):
+            cards = card[i] + card[j] + card[k]
+            if cards <= m and cards >= res: res = cards
+print(res)
 
-# 1620
-import sys
-inputs = sys.stdin.readline
-n, m = map(int, inputs().split())
-l = {}; ll = {}
+# 2231
+n = int(input())
+res = 0
+for i in range(1, n+1):
+    l = list(map(int, str(i)))
+    s = i + sum(l)
+    if s == n:
+        res = i
+        break
+print(res)
+
+# 7568
+l = [list(map(int, input().split())) for i in range (int(input()))]
+rank = [0]*len(l)
+for i in range(len(l)):
+    r = 1
+    x,y = l[i]
+    for j in l:
+        if j[0] > x and j[1] > y:
+            r += 1
+    rank[i] = str(r)
+print(" ".join(rank))
+
+# 1018
+n, m = map(int, input().split())
+b = []
 for i in range(n):
-    txt =  inputs().strip()
-    l[i+1] = txt; ll[txt] = i+1
-for j in range(m):
-    q = inputs().strip()
-    try: print(l[int(q)])
-    except: print(ll[q])
+    b.append(input())
+wc = "WB"*4 + "BW"*4
+bc = "BW"*4 + "WB"*4
+min = 2174000
+for r in range(n-7):
+    for c in range(m-7):
+        c1 = 0; c2 = 0; sec = ""
+        for row in b[r:r+8]:
+            sec += row[c:c+8]
+            if len(sec) == 16:
+                for i in range(16):
+                    if sec[i] != wc[i]: c1 += 1
+                    elif sec[i] != bc[i]: c2 += 1
+                sec = ""
+        if c1 <= c2 and c1 < min: min = c1
+        elif c2 < c1 and c2 < min: min = c2
+print(min)
 
-# 10816
-import sys
-inputs = sys.stdin.readline
-n = int(inputs())
-l = list(map(int, inputs().split()))
-dic = {}
-for elem in l:
-    dic[elem] = dic.get(elem, 0) + 1
-m = int(inputs())
-ll = list(map(int, input().split()))
-for j in range(m):
-    try: print(dic[ll[j]], end = ' ')
-    except: print(0, end = ' ')
-
-# 1764
-import sys
-inputs = sys.stdin.readline
-n, m = map(int, inputs().split())
-l = set(); ll = set()
-for i in range(n):
-    l.add(inputs().strip())
-for j in range(m):
-    ll.add(inputs().strip())
-res = list(sorted(l.intersection(ll)))
-print(len(res))
-print('\n'.join(res))
+# 1436
+nums = []
+for num in range(666, 2700000):
+    if '666' in str(num): nums.append(int(num))
+nums.sort()
+print(nums[int(input())-1])

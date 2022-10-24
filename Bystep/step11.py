@@ -1,62 +1,107 @@
-# 2798
-n, m = map(int, input().split())
-card = list(map(int, input().split()))
-res = 0
-for i in range(n):
-    for j in range(i+1, n):
-        for k in range(j+1, n):
-            cards = card[i] + card[j] + card[k]
-            if cards <= m and cards >= res: res = cards
-print(res)
-
-# 2231
+# 10872
+def fact(n):
+    result = 1
+    if n > 0 :
+        result = n*fact(n-1)
+    return result
 n = int(input())
-res = 0
-for i in range(1, n+1):
-    l = list(map(int, str(i)))
-    s = i + sum(l)
-    if s == n:
-        res = i
-        break
+print(fact(n))
+
+# 10870
+def fibo(n):
+    result = 1
+    if n == 1: result = 1
+    elif n > 1: result = fibo(n-1) + fibo(n-2)
+    else: result = 0
+    return result
+n = int(input())
+print(fibo(n))
+
+# 25501
+def recursion(s, l, r, c):
+    c += 1
+    if l >= r: return 1, c
+    elif s[l] != s[r]: return 0, c
+    else: return recursion(s, l+1, r-1, c)
+def isPalindrome(s):
+    return recursion(s, 0, len(s)-1, 0)
+n = int(input())
+for i in range(n):
+    txt = input()
+    print(isPalindrome(txt)[0], isPalindrome(txt)[1])
+
+# 24060
+def merge_sort(l, p, r):
+    if p < r and c <= k:
+        q = (p+r)//2
+        merge_sort(l, p , q)
+        merge_sort(l, q+1, r)
+        merge(l, p, q, r)
+        
+def merge(l, p, q, r):
+    global c, res
+    i = p; j = q+1
+    tmp = []
+    
+    while i <= q and j <= r:
+        if l[i] <= l[j]:
+            tmp.append(l[i])
+            i += 1
+        else:
+            tmp.append(l[j])
+            j += 1
+        
+    while i <= q:
+        tmp.append(l[i])
+        i += 1
+    
+    while j <= r:
+        tmp.append(l[j])
+        j += 1
+    
+    i = p; t = 0
+    
+    while i <= r:
+        l[i] = tmp[t]
+        c += 1
+        if c == k:
+            res = l[i]
+            break
+        i += 1
+        t += 1
+
+n, k = map(int, input().split())
+l = list(map(int, input().split()))
+c = 0
+res = -1
+merge_sort(l, 0, n - 1)
 print(res)
 
-# 7568
-l = [list(map(int, input().split())) for i in range (int(input()))]
-rank = [0]*len(l)
-for i in range(len(l)):
-    r = 1
-    x,y = l[i]
-    for j in l:
-        if j[0] > x and j[1] > y:
-            r += 1
-    rank[i] = str(r)
-print(" ".join(rank))
+# 2447
+def star(n):
+    if n == 3: return ['***', '* *', '***']
+    arr = star(n//3)
+    stars = []
+    for i in arr:
+        stars.append(i*3)
+    for i in arr:
+        stars.append(i+' '*(n//3)+i)
+    for i in arr:
+        stars.append(i*3)
+    return stars
+n = int(input())
+print('\n'.join(star(n)))
 
-# 1018
-n, m = map(int, input().split())
-b = []
-for i in range(n):
-    b.append(input())
-wc = "WB"*4 + "BW"*4
-bc = "BW"*4 + "WB"*4
-min = 2174000
-for r in range(n-7):
-    for c in range(m-7):
-        c1 = 0; c2 = 0; sec = ""
-        for row in b[r:r+8]:
-            sec += row[c:c+8]
-            if len(sec) == 16:
-                for i in range(16):
-                    if sec[i] != wc[i]: c1 += 1
-                    elif sec[i] != bc[i]: c2 += 1
-                sec = ""
-        if c1 <= c2 and c1 < min: min = c1
-        elif c2 < c1 and c2 < min: min = c2
-print(min)
-
-# 1436
-nums = []
-for num in range(666, 2700000):
-    if '666' in str(num): nums.append(int(num))
-nums.sort()
-print(nums[int(input())-1])
+# 11729
+def hanoi(n, a, b, c):
+    if n == 1: print(a, c)
+    else:
+        hanoi(n-1, a, c, b)
+        print(a, c)
+        hanoi(n-1, b, a, c)
+c = 1
+n = int(input())
+for i in range(n-1):
+    c = c*2 + 1
+print(c)
+hanoi(n, 1, 2, 3)

@@ -1,69 +1,82 @@
-# 1712
-a, b, c = map(int, input().split())
-if c-b == 0 or b-c > 0: print(-1)
-else: print(int(a/(c-b))+1)
+# 11654
+print(ord(input()))
 
-# 2292
+# 11720
 n = int(input())
-r = 1; c = 1
-while n > c:
-    c += r*6
-    r += 1
-print(r)
+x = input()
+p = 0
+for i in x:
+    p += int(i)
+print(p)
 
-# 1193
-n = int(input())
-l = 0; c = 0
-while n > l:
-    c += 1
-    l += c
-a = l - n
-if c % 2 == 0: print(f'{(c-a)}/{(a+1)}')
-else: print(f'{a+1}/{(c-a)}')
+# 10809
+s = input()
+a = 'abcdefghijklmnopqrstuvwxyz'
+for i in a:
+    print(s.find(i), end = ' ')
 
-# 2869
-a, b, v = map(int, input().split())
-d = (v-a)/(a-b)
-if d > int(d): print(int(d)+2)
-else: print(int(d)+1)
-
-# 10250
+# 2675
 t = int(input())
 for i in range(t):
-    h, w, n = map(int, input().split())
-    a = n%h
-    if a == 0: a = h; b = n//h
-    else: b = n//h+1
-    print(f'{a}{b:0>2}')
+    r, s = map(str, input().split())
+    for j in s:
+        print(j*int(r), end = '')
+    print()
 
-# 2775
-t = int(input())
-for i in range(t):
-    k = int(input())
-    n = int(input())
-    l = [[0 for col in range(n+1)] for row in range(k+1)]
-    for i in range(1, n+1):
-        l[0][i] = i
-    for j in range(k+1):
-        l[k][1] = 1
-    for i in range(1, k+1):
-        for j in range(1, n+1):
-            l[i][j] = (l[i-1][j] + l[i][j-1])
-    print(l[k][n])
+# 1157
+s = input().upper()
+p = []; res = {}
+for i in range(len(s)):
+    p.append(0)
+d = dict(zip(s, p))
+for i in s:
+    d[i] += 1
+m = max(d.values())
+for k, v in d.items():
+    if v == m: res[k] = v
+if len(res) == 1:
+    for k in res.keys(): print(k)
+else: print('?')
 
-# 2839
+# 1152
+s = list(input().split())
+print(len(s))
+
+# 2908
+a, b = map(str, input().split())
+a = int(a[2]+a[1]+a[0])
+b = int(b[2]+b[1]+b[0])
+if a>b : print(a)
+else: print(b)
+
+# 5622
+s = input()
+a = 'ABCDEFGHIJKLMNOQRSTUVWXY'
+t = 0
+for i in s:
+    if i == 'Z': t += 10
+    elif i == 'P': t += 8
+    else: t += (a.find(i)+3)//3+2
+print(t)
+
+# 2941
+s = input()
+ss = ['c=', 'c-', 'dz=', 'd-', 'lj', 'nj', 's=', 'z=']
+for i in ss:
+    s = s.replace(i, '*')
+print(len(s))
+
+# 1316
 n = int(input())
-11
-a = n//5
-while a >= 0:
-    b = (n-(a*5))//3
-    m = (n-(a*5))%3
-    if m == 0: break
-    a -= 1
-if a < 0: print(-1)
-else: print(a+b)
-
-# 10757
-import sys; inputs = sys.stdin.readline
-a, b = map(int, inputs().split())
-print(a+b)
+c = 0
+for i in range(n):
+    s = input()
+    d = 0; res = []
+    for j in s:
+        if j not in res:
+            res.append(j)
+            d += 1
+        else:
+            if res[len(res)-1] == j: d += 1
+    if d == len(s): c += 1
+print(c)
