@@ -48,3 +48,10 @@ for i in range(c):
     for j in range(n):
         if s[j] > mean: count += 1
     print(f'{count/n*100:.03f}%')
+
+# 10807
+import sys
+inputs = sys.stdin.readline
+n = int(inputs())
+l = list(map(int, inputs().split()))
+print(l.count(int(inputs())))
