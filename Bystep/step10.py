@@ -123,3 +123,13 @@ l.sort()
 dict = {l[i]:i for i in range(len(l))}
 for j in x:
     print(dict[j], end=' ')
+
+# 2587
+import sys
+inputs = sys.stdin.readline
+l = []
+for i in range(5):
+    l.append(int(inputs()))
+l.sort()
+print(int(sum(l)/5))
+print(l[2])
