@@ -16,3 +16,13 @@ for i in range(3):
     if b not in y: y.append(b)
     else: y.remove(b)
 print(' '.join(str(j) for j in x+y))
+
+# 4153
+import sys
+inputs = sys.stdin.readline
+while True:
+    l = list(map(int, inputs().split()))
+    l.sort()
+    if l == [0, 0, 0]: break
+    elif l[0]**2 + l[1]**2 == l[2]**2: print('right')
+    else: print('wrong')
