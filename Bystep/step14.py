@@ -47,3 +47,15 @@ inputs = sys.stdin.readline
 n = int(inputs())
 print(3.14159265359*n**2)
 print(2*n**2)
+
+# 1002
+cir = [[5*i, 4*i, 3*i] for i in range(1, 2501)]
+t = int(inputs())
+for i in range(t):
+    x1, y1, r1, x2, y2, r2 = map(int, input().split())
+    dis = round(((x1-x2)**2+(y1-y2)**2)**0.5)
+    l = [r1, r2, dis]; l.sort()
+    if l[0] > l[1]+l[2]: print(0)
+    elif l[0] == l[1]+l[2]: print(1)
+    elif l in cir: print(-1)
+    else: print(1)
