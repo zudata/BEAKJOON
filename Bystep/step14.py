@@ -40,3 +40,10 @@ for v, x in enumerate(l):
     elif x[0] < 3 and x[1] > h:
         h = x[1]; indh = v
 print(n*(w*h - l[(indw+3)%6][1]*l[(indh+3)%6][1]))
+
+# 3053
+import sys
+inputs = sys.stdin.readline
+n = int(inputs())
+print(3.14159265359*n**2)
+print(2*n**2)
