@@ -60,3 +60,19 @@ for i in range(t):
     elif math.isclose(r1+r2, dis) or math.isclose(abs(r1-r2), dis): print(1)
     else: print(0)
 ## 실수 비교 시에 == 사용하는 것은 위험 -> isclose로 비교하는 게 좋음
+
+# 1004
+import sys
+inputs = sys.stdin.readline
+t = int(inputs())
+for i in range(t):
+    x1, y1, x2, y2 = map(int, inputs().split())
+    n = int(inputs())
+    count = 0
+    for i in range(n):
+        cx, cy, r = map(int, inputs().split())
+        d1 = ((x1-cx)**2 + (y1-cy)**2)**0.5
+        d2 = ((x2-cx)**2 + (y2-cy)**2)**0.5
+        if (d1 < r and d2 < r) or (d1 > r and d2 > r): pass
+        else: count += 1
+    print(count)
