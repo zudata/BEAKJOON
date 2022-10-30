@@ -28,3 +28,15 @@ while a >= d and b >= d:
     else: d += 1
 print(res)
 print(int(res*a*b))
+
+# 1934
+import sys
+inputs = sys.stdin.readline
+def lc(x, y):
+    r = x%y
+    if r == 0: return y
+    else: return lc(y, r)
+for i in range(int(inputs())):
+    a, b = map(int, inputs().split())
+    l = lc(a, b)
+    print((a//l)*(b//l)*l)
