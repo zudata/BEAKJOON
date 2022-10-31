@@ -40,3 +40,20 @@ for i in range(int(inputs())):
     a, b = map(int, inputs().split())
     l = lc(a, b)
     print((a//l)*(b//l)*l)
+
+# 2981
+import sys, math
+inputs = sys.stdin.readline
+def lc(x, y):
+    r = x%y
+    if r == 0: return y
+    else: return lc(y, r)
+n = int(inputs())
+l = [int(inputs()) for i in range(n)]
+l.sort(); ll = l[0]; res = []
+for j in range(n):
+    l[j] -= ll
+lcv = lc(l[1], l[n-1])
+for k in range(2, lcv+1):
+    if math.isclose(lcv%k, 0): res.append(str(k))
+print(' '.join(res))
