@@ -57,3 +57,17 @@ lcv = lc(l[1], l[n-1])
 for k in range(2, lcv+1):
     if math.isclose(lcv%k, 0): res.append(str(k))
 print(' '.join(res))
+
+# 3036
+import sys
+inputs = sys.stdin.readline
+def lc(x, y):
+    r = x%y
+    if r == 0: return y
+    else: return lc(y, r)
+n = int(inputs())
+l = list(map(int, inputs().split()))
+lv = l.pop(0)
+for i in l:
+    lcv = lc(lv, i)
+    print(f"{int(lv/lcv)}/{int(i/lcv)}")
