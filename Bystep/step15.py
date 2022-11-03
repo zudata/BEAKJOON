@@ -55,13 +55,21 @@ def gcd_N(arr): # N개의 최대공약수
     return gcdi
 n = int(inputs())
 l = [int(inputs()) for i in range(n)]
-l.sort(); ll = l.pop(0); res = []
+ll = min(l); l.remove(ll); res = []
 for j in range(n-1):
     l[j] -= ll
-gcv = gcd_N(l)
-for k in range(2, gcv+1):
-    if math.isclose(gcv%k, 0): res.append(str(k))
-print(' '.join(res))
+gcv = gcd_N(l); res.append(gcv)
+if gcv == 4:
+    res.append(2)
+else:
+    for k in range(2, int(math.sqrt(gcv))+1):
+        if math.isclose(gcv%k, 0):
+            if k not in res: res.append(k)
+            if gcv//k not in res: res.append(gcv//k)
+# 시간 복잡도를 줄이기 위해 약수를 구할 때 해당 수의 제곱근까지만 반복하면 된다.
+for p in range(len(res)):
+    pp = min(res); res.remove(pp)
+    print(pp, end = ' ')
 
 # 3036
 import sys
