@@ -84,3 +84,16 @@ lv = l.pop(0)
 for i in l:
     lcv = lc(lv, i)
     print(f"{int(lv/lcv)}/{int(i/lcv)}")
+
+# 11050
+import sys
+inputs = sys.stdin.readline
+n, k = map(int, inputs().split())
+res = n
+for i in range(1, n):
+    res *= i
+for j in range(1, k+1):
+    res /= j
+for l in range(1, n-k+1):
+    res/= l
+print(int(res))
