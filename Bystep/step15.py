@@ -97,3 +97,14 @@ for j in range(1, k+1):
 for l in range(1, n-k+1):
     res/= l
 print(int(res))
+
+# 11051
+import sys
+inputs = sys.stdin.readline
+n, k = map(int, inputs().split())
+up = 1; under = 1
+for i in range(1, k+1):
+    up *= n-i+1
+    under *= i
+res = int(up//under)%10007
+print(res)
