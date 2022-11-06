@@ -108,3 +108,15 @@ for i in range(1, k+1):
     under *= i
 res = int(up//under)%10007
 print(res)
+
+# 1010
+import sys
+inputs = sys.stdin.readline
+t = int(inputs())
+for i in range(t):
+    n, m = map(int, inputs().split())
+    up = 1; under = 1
+    for i in range(1, n+1):
+        up *= m-i+1
+        under *= i
+    print(int(up//under))
