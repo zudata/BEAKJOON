@@ -116,7 +116,22 @@ t = int(inputs())
 for i in range(t):
     n, m = map(int, inputs().split())
     up = 1; under = 1
-    for i in range(1, n+1):
-        up *= m-i+1
-        under *= i
+    for j in range(1, n+1):
+        up *= m-j+1
+        under *= j
     print(int(up//under))
+
+# 9375
+import sys
+inputs = sys.stdin.readline
+items = {}
+for i in range(int(inputs())):
+    items.clear()
+    for j in range(int(inputs())):
+        k, s = map(str, inputs().split())
+        if s in items: items[s] += 1
+        else: items[s] = 2
+    res = 1
+    for value in items.values():
+        res *= value
+    print(res-1)
