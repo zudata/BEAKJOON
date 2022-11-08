@@ -135,3 +135,15 @@ for i in range(int(inputs())):
     for value in items.values():
         res *= value
     print(res-1)
+
+# 1676
+import sys
+inputs = sys.stdin.readline
+n = int(inputs())
+for i in range(1, n):
+    n *= i
+n = str(n); res = 0
+for j in range(len(n)-1, 0, -1):
+    if n[j] == '0': res += 1
+    else: break
+print(res)
