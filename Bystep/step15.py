@@ -147,3 +147,19 @@ for j in range(len(n)-1, 0, -1):
     if n[j] == '0': res += 1
     else: break
 print(res)
+
+# 2004
+import sys
+inputs = sys.stdin.readline
+def comb(n, m):
+    up = 1; under = 1
+    for x in range(1, m+1):
+        up *= n-x+1
+        under *= x
+    return int(up//under)
+n, m = map(int, inputs().split())
+c = str(comb(n, m)); res = 0
+for i in range(len(c)-1, -1, -1):
+    if c[i] == '0': res += 1
+    else: break
+print(res)
