@@ -151,15 +151,14 @@ print(res)
 # 2004
 import sys
 inputs = sys.stdin.readline
-def comb(n, m):
-    up = 1; under = 1
-    for x in range(1, m+1):
-        up *= n-x+1
-        under *= x
-    return int(up//under)
+def div(x, y):
+    c = 0
+    while y <= x:
+        x //= y
+        c += x
+    return c
 n, m = map(int, inputs().split())
-c = str(comb(n, m)); res = 0
-for i in range(len(c)-1, -1, -1):
-    if c[i] == '0': res += 1
-    else: break
-print(res)
+up2 = div(n, 2); up5 = div(n, 5)
+un2 = div(m, 2) + div(n-m, 2)
+un5 = div(m, 5) + div(n-m, 5)
+print(min(up2 - un2, up5 - un5))
