@@ -84,3 +84,20 @@ def queen(x, s):
             s.pop()
 queen(0, [])
 print(res)
+
+# 2580
+import sys
+inputs = sys.stdin.readline
+s = []; ss = 0
+for _ in range(9):
+    l = list(map(int, inputs().split()))
+    s.append(l)
+    ss += sum(l)
+def sudoku(s):
+    if ss == 405:
+        return s
+    for i in range(1, 10):
+        check = True
+        for j in s:
+            if 0 not in j:
+                check = False
