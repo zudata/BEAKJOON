@@ -88,16 +88,32 @@ print(res)
 # 2580
 import sys
 inputs = sys.stdin.readline
-s = []; ss = 0
-for _ in range(9):
+def check(x, y, n):
+    nx = x//3*3
+    ny = y//3*3
+    for i in range(9):
+        if s[x][i] == n: return False
+        elif s[i][y] == n: return False
+    for i in range(3):
+        for j in range(3):
+            if n == s[nx+i][ny+j]: return False
+    return True
+def sudoku(p):
+    if len(z) == p:
+        for i in range(9):
+            print(*s[i])
+        return
+    for n in range(1, 10):
+        x = z[p][0]; y = z[p][1]
+        if check(x, y, n):
+            s[x][y] = n
+            sudoku(p+1)
+            s[x][y] = 0
+s = []; z = []
+for y in range(9):
     l = list(map(int, inputs().split()))
     s.append(l)
-    ss += sum(l)
-def sudoku(s):
-    if ss == 405:
-        return s
-    for i in range(1, 10):
-        check = True
-        for j in s:
-            if 0 not in j:
-                check = False
+    for x in range(9):
+        if l[x] == 0:
+            z.append((x, y))
+sudoku(0)
