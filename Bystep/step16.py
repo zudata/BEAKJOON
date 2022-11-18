@@ -99,13 +99,14 @@ def check(x, y, n):
             if n == s[nx+i][ny+j]: return False
     return True
 def sudoku(p):
-    if len(z) == p:
+    if p == len(z):
         for i in range(9):
             print(*s[i])
         return
     for n in range(1, 10):
         x = z[p][0]; y = z[p][1]
         if check(x, y, n):
+            z.pop(0)
             s[x][y] = n
             sudoku(p+1)
             s[x][y] = 0
