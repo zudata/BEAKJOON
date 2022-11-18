@@ -99,7 +99,7 @@ def check(x, y, n):
             if n == s[nx+i][ny+j]: return False
     return True
 def sudoku(p):
-    if p == len(z):
+    if len(z) == 0:
         for i in range(9):
             print(*s[i])
         return
@@ -110,11 +110,11 @@ def sudoku(p):
             s[x][y] = n
             sudoku(p+1)
             s[x][y] = 0
-s = []; z = []
-for y in range(9):
-    l = list(map(int, inputs().split()))
-    s.append(l)
-    for x in range(9):
-        if l[x] == 0:
+ss = [list(map(int, inputs().split())) for _ in range(9)]
+s = ss.copy()
+z = []
+for x in range(9):
+    for y in range(9):
+        if s[x][y] == 0:
             z.append((x, y))
 sudoku(0)
