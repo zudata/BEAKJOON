@@ -88,38 +88,56 @@ print(res)
 # 2580
 import sys
 board = [list(map(int, sys.stdin.readline().split())) for _ in range(9)]
-zero_pos = [(x,y) for x in range(9) for y in range(9) if board[x][y] == 0]
-z_len = len(zero_pos)
-offset = [(1, 1), (1, -1), (1, 0), (-1, 1), (-1, -1), (-1, 0), (0, 1), (0, -1), (0, 0)]
-offset_pos = [1]*3+[4]*3+[7]*3
-finished = False
-def choice(x,y):
-    nums = list(range(1,10))
-    for n in range(9):
-        if board[x][n] in nums:
-            nums.remove(board[x][n])
-        if board[n][y] in nums:
-            nums.remove(board[n][y])
-    for off in offset:
-        dx = offset_pos[x]+off[0]
-        dy = offset_pos[y]+off[1]
-        if board[dx][dy] in nums:
-            nums.remove(board[dx][dy])
-    return nums
-
-def dfs(cur):
-    global finished
-    if finished == True :
-        return
-    if cur == z_len:
-        for item in board:
-            print(*item)
-        finished = True
-        return
+def check(x, y, n):
+    for i in range(9):
+        if board[x][i] == n or board[i][y] == n:
+            return False
+        if board[x//3*3 + i//3][y//3*3 + i%3] == n:
+            return False
+    return True
+def sudoku(x, y):
+    if x == 9:
+        for row in board:
+            print(' '.join(map(str, row)))
+        exit(0)
+    if board[x][y] != 0:
+        if y == 8: sudoku(x+1, 0)
+        else: sudoku(x, y+1)
     else:
-        (x,y) = zero_pos[cur]
-        for c in choice(x,y):
-            board[x][y] = c
-            dfs(cur+1)
-            board[x][y] = 0
-dfs(0)
+        for i in range(1, 10):
+            if check(x, y, i):
+                board[x][y] = i
+                if y == 8: sudoku(x+1, 0)
+                else: sudoku(x, y+1)
+            if i == 9:
+                board[x][y] = 0
+sudoku(0, 0)
+
+# 14888
+import sys
+inputs = sys.stdin.readline
+N = int(inputs())
+A = list(map(int, inputs().split()))
+Op = list(map(int, inputs().split()))
+
+Min = 1e9
+Max = -1e9
+
+def Recur(Add, Sub, Mul, Div, n, Res):
+    global Min,Max
+    if n < N-1:
+        if 0 < Add:
+            Recur(Add-1, Sub, Mul, Div, n+1, Res+A[n+1])
+        if 0 < Sub:
+            Recur(Add, Sub-1, Mul, Div, n+1, Res-A[n+1])
+        if 0 < Mul:
+            Recur(Add, Sub, Mul-1, Div, n+1, Res*A[n+1])
+        if 0 < Div:
+            Recur(Add, Sub, Mul, Div-1, n+1, int(Res/A[n+1]))
+    else:
+        Min = min(Min,Res)
+        Max = max(Max,Res)
+
+Recur(Op[0], Op[1], Op[2], Op[3], 0, A[0])
+print(Max)
+print(Min)
