@@ -141,3 +141,42 @@ def Recur(Add, Sub, Mul, Div, n, Res):
 Recur(Op[0], Op[1], Op[2], Op[3], 0, A[0])
 print(Max)
 print(Min)
+
+# 14889
+import sys
+from math import factorial
+inputs = sys.stdin.readline
+N = int(inputs())
+S = [list(map(int, inputs().split())) for _ in range(N)]
+Team1 = []
+Min = 100 * 400
+Cnt = 0
+End = factorial(N) // (factorial(N//2)**2)
+def Recur(n,start):
+    global Min, Cnt
+    if n < N//2:
+        for i in range(start,N):
+            if i not in Team1:
+                Team1.append(i)
+                Recur(n+1,i+1)
+                Team1.pop()
+    else:
+        Team2 = [i for i in range(N)]
+        for i in Team1:
+            Team2.remove(i)
+        Sum1 = 0
+        for i in range(N//2):
+            for j in range(i,N//2):
+                Sum1 += (S[Team1[i]][Team1[j]] + S[Team1[j]][Team1[i]])
+        Sum2 = 0
+        for i in range(N//2):
+            for j in range(i,N//2):
+                Sum2 += (S[Team2[i]][Team2[j]] + S[Team2[j]][Team2[i]])
+        # print(Team1,Team2)
+        Min = min(Min, abs(Sum1-Sum2))
+        Cnt += 1
+        if Cnt == End:
+            print(Min)
+            exit(0)
+
+Recur(0,0)
