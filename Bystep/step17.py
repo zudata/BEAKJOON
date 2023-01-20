@@ -49,15 +49,8 @@ while True:
 import sys
 inputs = sys.stdin.readline
 n = int(inputs())
-r = n//2; res = 0
-def c(n, r):
-    com = 1
-    for x in range(n, n-r, -1):
-        com *= x
-    for y in range(2, r+1):
-        com /= y
-    return com
-for i in range(r+1):
-    res += c(n, i)
-    n -= 1
-print(int(res%15746))
+dp = [0]*1000001
+dp[1], dp[2] = 1, 2
+for i in range(3, n+1):
+    dp[i] = (dp[i-1] + dp[i-2])%15746
+print(dp[n])
