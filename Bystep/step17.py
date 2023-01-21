@@ -54,3 +54,16 @@ dp[1], dp[2] = 1, 2
 for i in range(3, n+1):
     dp[i] = (dp[i-1] + dp[i-2])%15746
 print(dp[n])
+
+# 9461
+import sys
+inputs = sys.stdin.readline
+dp = [0]*101
+def p(x):
+    if dp[x] != 0: return dp[x]
+    if x == 1 or x == 2 or x == 3: return 1
+    dp[x] = p(x-2) + p(x-3)
+    return dp[x]
+for i in range(int(inputs())):
+    n = int(inputs())
+    print(p(n))
