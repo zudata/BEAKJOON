@@ -67,3 +67,14 @@ def p(x):
 for i in range(int(inputs())):
     n = int(inputs())
     print(p(n))
+
+# 1912
+import sys
+inputs = sys.stdin.readline
+n = int(inputs())
+l = list(map(int, inputs().split()))
+dp = [0]*n
+dp[0] = l[0]
+for i in range(1, n):
+    dp[i] = max(dp[i-1] + l[i], l[i])
+print(max(dp))
