@@ -78,3 +78,16 @@ dp[0] = l[0]
 for i in range(1, n):
     dp[i] = max(dp[i-1] + l[i], l[i])
 print(max(dp))
+
+# 1149
+import sys
+inputs = sys.stdin.readline
+n = int(inputs())
+dp = []
+for _ in range(n):
+    dp.append(list(map(int, inputs().split())))
+for i in range(1, n):
+    dp[i][0] += min(dp[i-1][1], dp[i-1][2])
+    dp[i][1] += min(dp[i-1][0], dp[i-1][2])
+    dp[i][2] += min(dp[i-1][0], dp[i-1][1])
+print(min(dp[-1]))
