@@ -105,3 +105,18 @@ for i in range(1, len(dp)):
         for j in range(1, i):
             dp[i][j] += max(dp[i-1][j-1], dp[i-1][j])
 print(max(dp[-1]))
+
+# 2579
+import sys
+inputs = sys.stdin.readline
+n = int(inputs())
+l = []
+for _ in range(n): l.append(int(inputs()))
+dp = [l[0]]
+for i in range(1, n):
+    if i == 1: dp.append(max(l[i] + dp[i-1], l[i]))
+    elif i == 2: dp.append(max(l[i] + l[i-1], l[i] + dp[i-2]))
+    else: break
+for i in range(3, n):
+    dp.append(max(l[i] + l[i-1] + dp[i-3], l[i] + dp[i-2]))
+print(dp[-1])
