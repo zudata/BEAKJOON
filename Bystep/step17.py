@@ -120,3 +120,14 @@ for i in range(1, n):
 for i in range(3, n):
     dp.append(max(l[i] + l[i-1] + dp[i-3], l[i] + dp[i-2]))
 print(dp[-1])
+
+# 1463
+import sys
+inputs = sys.stdin.readline
+n = int(inputs())
+dp = [0]*(n+1)
+for i in range(2, n+1):
+    dp[i] = dp[i-1] + 1
+    if i%2 == 0: dp[i] = min(dp[i], dp[i//2]+1)
+    if i%3 == 0: dp[i] = min(dp[i], dp[i//3]+1)
+print(dp[n])
