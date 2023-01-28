@@ -144,3 +144,19 @@ if n > 1:
         for j in range(1, 9):
             dp[i][j] = dp[i-1][j-1] + dp[i-1][j+1]
 print(sum(dp[n-1])%1000000000)
+
+# 2156
+import sys
+inputs = sys.stdin.readline
+n = int(inputs())
+l = []
+for _ in range(n): l.append(int(inputs()))
+dp = [0]*n; dp[0] = l[0]
+if n > 1:
+    dp[1] = l[1] + dp[0]
+if n > 2:
+    dp[2] = max(l[2] + dp[0], l[2] + l[1], dp[1])
+if n > 3:
+    for i in range(3, n):
+        dp[i] = max(l[i] + dp[i-2], l[i] + l[i-1] + dp[i-3], dp[i-1])
+print(dp[-1])
