@@ -160,3 +160,15 @@ if n > 3:
     for i in range(3, n):
         dp[i] = max(l[i] + dp[i-2], l[i] + l[i-1] + dp[i-3], dp[i-1])
 print(dp[-1])
+
+# 11053
+import sys
+inputs = sys.stdin.readline
+n = int(inputs())
+l = list(map(int, inputs().split()))
+dp = [1]*n
+for i in range(n):
+    for j in range(i):
+        if l[i] > l[j]:
+            dp[i] = max(dp[i], dp[j] + 1)
+print(max(dp))
