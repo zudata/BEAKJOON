@@ -172,3 +172,18 @@ for i in range(n):
         if l[i] > l[j]:
             dp[i] = max(dp[i], dp[j] + 1)
 print(max(dp))
+
+# 11054
+import sys
+inputs = sys.stdin.readline
+n = int(inputs())
+l = list(map(int, inputs().split()))
+dp = [1]*n; dp2 = [1]*n; res = []
+for i in range(n-1):
+    for j in range(i+1, n):
+        if l[i] < l[j] and dp[j] < dp[i]+1: dp[j] = dp[i] + 1
+for i in range(n-1, 0, -1):
+    for j in range(i-1, -1, -1):
+        if l[i] < l[j] and dp2[j] < dp2[i]+1: dp2[j] = dp2[i] + 1
+for i in range(n): res.append(dp[i] + dp2[i] - 1)
+print(max(res))
