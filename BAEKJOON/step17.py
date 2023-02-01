@@ -201,3 +201,12 @@ for i in range(n-1):
         if l[i] < l[j] and db[j] < db[i] + 1:
             db[j] = db[i] + 1
 print(n - max(db))
+
+# 9251
+word1 = input(); word2 = input()
+arr = [[0]*(len(word2) + 1) for _ in range(len(word1) + 1)]
+for i in range(len(word1)):
+    for j in range(len(word2)):
+        if word1[i] == word2[j]: arr[i+1][j+1] = arr[i][j] + 1
+        else: arr[i+1][j+1] = max(arr[i][j+1], arr[i+1][j])
+print(arr[len(word1)][len(word2)])
