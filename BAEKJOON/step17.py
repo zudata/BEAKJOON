@@ -210,3 +210,14 @@ for i in range(len(word1)):
         if word1[i] == word2[j]: arr[i+1][j+1] = arr[i][j] + 1
         else: arr[i+1][j+1] = max(arr[i][j+1], arr[i+1][j])
 print(arr[len(word1)][len(word2)])
+
+# 12865
+import sys
+inputs = sys.stdin.readline
+n, k = map(int, inputs().split())
+dp = [0]*100001
+for i in range(n):
+    w, v = map(int, inputs().split())
+    for j in range(k, w-1, -1):
+        dp[j] = max(dp[j], dp[j-w]+v)
+print(dp[k])
