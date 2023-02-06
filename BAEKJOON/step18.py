@@ -41,3 +41,16 @@ for i in range(q):
     else:
         res = arr[r][orda]
     print(res)
+
+# 10986
+import sys
+inputs = sys.stdin.readline
+n, m = map(int, inputs().split())
+a = list(map(int, inputs().split())) + [0]
+r = [0]*m
+for i in range(n):
+    a[i] += a[i-1]
+    r[a[i]%m] += 1
+res = r[0]
+for i in r: res += i*(i -1)//2
+print(res)
