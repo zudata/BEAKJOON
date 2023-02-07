@@ -52,5 +52,18 @@ for i in range(n):
     a[i] += a[i-1]
     r[a[i]%m] += 1
 res = r[0]
-for i in r: res += i*(i -1)//2
+for i in r: res += i*(i-1)//2
 print(res)
+
+# 11660
+import sys
+inputs = sys.stdin.readline
+n, m = map(int, inputs().split())
+l = [list(map(int, inputs().split())) for _ in range(n)]
+sums = [[0]*(n+1) for i in range(n+1)]
+for i in range(n):
+    for j in range(n):
+        sums[i+1][j+1] = sums[i+1][j] + sums[i][j+1] - sums[i][j] + l[i][j]
+for _ in range(m):
+    x1, y1, x2, y2 = map(int, inputs().split())
+    print(sums[x2][y2] - sums[x1-1][y2] - sums[x2][y1-1] + sums[x1-1][y1-1])
