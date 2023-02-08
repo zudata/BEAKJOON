@@ -67,3 +67,24 @@ for i in range(n):
 for _ in range(m):
     x1, y1, x2, y2 = map(int, inputs().split())
     print(sums[x2][y2] - sums[x1-1][y2] - sums[x2][y1-1] + sums[x1-1][y1-1])
+
+# 25682
+import sys
+inputs = sys.stdin.readline
+n, m, k = map(int, inputs().split())
+board = [list(inputs().rstrip()) for _ in range(n)]
+def mini(col):
+    sums = [[0]*(m+1) for _ in range(n+1)]
+    for i in range(n):
+        for j in range(m):
+            if (i + j) % 2 == 0: 
+                val = board[i][j] != col
+            else:
+                val = board[i][j] == col
+            sums[i+1][j+1] = sums[i][j+1] + sums[i+1][j] - sums[i][j] + val
+    count = int(1e9)
+    for i in range(1, n-k+2):
+        for j in range(1, m-k+2):
+            count = min(count, sums[i+k-1][j+k-1] - sums[i+k-1][j-1] - sums[i-1][j+k-1] + sums[i-1][j-1])
+    return count
+print(min(mini('B'), mini('W')))
