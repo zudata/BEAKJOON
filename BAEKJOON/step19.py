@@ -23,3 +23,15 @@ for i in l[1:]:
         m = i[1]
         res += 1
 print(res)
+
+# 11399
+import sys
+inputs = sys.stdin.readline
+n = int(inputs())
+l = list(map(int, inputs().split()))
+l.sort()
+res = l[0]; c = l[0]
+for i in l[1:]:
+    c += i
+    res += c
+print(res)
