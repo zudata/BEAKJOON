@@ -51,3 +51,16 @@ res = plus[0]
 for i in range(1, len(plus)):
     res -= plus[i]
 print(res)
+
+# 13305
+import sys
+inputs = sys.stdin.readline
+n = int(inputs())
+a = list(map(int, inputs().split()))
+b = list(map(int, inputs().split()))
+res = 0; m = b[0]
+for i in range(0, len(b) - 1):
+    if b[i] < m:
+        m = b[i]
+    res += a[i]*m
+print(res)
