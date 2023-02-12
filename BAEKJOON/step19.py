@@ -35,3 +35,19 @@ for i in l[1:]:
     c += i
     res += c
 print(res)
+
+# 1541
+import sys
+inputs = sys.stdin.readline
+s = inputs().strip().split('-')
+plus = []
+for ss in s:
+    ss = ss.split('+')
+    sums = 0
+    for sss in ss:
+        sums += int(sss)
+    plus.append(sums)
+res = plus[0]
+for i in range(1, len(plus)):
+    res -= plus[i]
+print(res)
