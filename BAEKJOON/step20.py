@@ -25,3 +25,14 @@ for i in range(n):
     elif order == "size": print(size())
     elif order == "empty": print(empty())
     elif order == "top": print(top())
+
+# 10773
+import sys
+inputs = sys.stdin.readline
+k = int(inputs())
+l = []
+for _ in range(k):
+    n = int(inputs())
+    if n == 0: l.pop()
+    else: l.append(n)
+print(sum(l))
