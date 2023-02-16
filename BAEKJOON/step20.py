@@ -36,3 +36,15 @@ for _ in range(k):
     if n == 0: l.pop()
     else: l.append(n)
 print(sum(l))
+
+# 9012
+import sys
+inputs = sys.stdin.readline
+t = int(inputs())
+for _ in range(t):
+    s = inputs().strip()
+    while s.find('()') != -1:
+        s = s.replace('()', '')
+    if len(s) == 0:
+        print('YES')
+    else: print('NO')
