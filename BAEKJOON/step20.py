@@ -48,3 +48,20 @@ for _ in range(t):
     if len(s) == 0:
         print('YES')
     else: print('NO')
+
+# 4949
+while True:
+    s = input()
+    if s == '.': break
+    else:
+        s = s.replace('.', '')
+        for i in range(97, 123):
+            s = s.replace(chr(i), '')
+            s = s.replace(chr(i - 32), '')
+        while (s.find('()') != -1) or (s.find('[]') != -1) or (s.find(' ') != -1):
+            s = s.replace('()', '')
+            s = s.replace('[]', '')
+            s = s.replace(' ', '')
+        if len(s) == 0:
+            print('YES')
+        else: print('NO')
