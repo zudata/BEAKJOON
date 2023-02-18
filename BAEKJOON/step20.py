@@ -51,17 +51,15 @@ for _ in range(t):
 
 # 4949
 while True:
-    s = input()
+    ss = ''; s = input()
     if s == '.': break
     else:
-        s = s.replace('.', '')
-        for i in range(97, 123):
-            s = s.replace(chr(i), '')
-            s = s.replace(chr(i - 32), '')
-        while (s.find('()') != -1) or (s.find('[]') != -1) or (s.find(' ') != -1):
-            s = s.replace('()', '')
-            s = s.replace('[]', '')
-            s = s.replace(' ', '')
-        if len(s) == 0:
-            print('YES')
-        else: print('NO')
+        for i in s:
+            if i == '(' or i == ')' or i == '[' or i == ']':
+                ss += i
+        while (ss.find('()') != -1) or (ss.find('[]') != -1):
+            ss = ss.replace('()', '')
+            ss = ss.replace('[]', '')
+        if len(ss) == 0:
+            print('yes')
+        else: print('no')
