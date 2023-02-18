@@ -63,3 +63,19 @@ while True:
         if len(ss) == 0:
             print('yes')
         else: print('no')
+
+# 1874
+import sys
+inputs = sys.stdin.readline
+n = int(inputs())
+stack = []; res = []; c = 1; test = 0
+for _ in range(n):
+    num = int(inputs())
+    while c <= num:
+        stack.append(c)
+        res.append('+')
+        c += 1
+    if stack.pop() != num: test = 1
+    else: res.append('-')
+if test == 1: print('NO')
+else: print('\n'.join(res))
