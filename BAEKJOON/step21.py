@@ -23,3 +23,11 @@ for _ in range(n):
         elif f[0] == 'back':
             if len(q) - i == 0: print(-1)
             else: print(q[-1])
+
+# 2164
+import sys
+inputs = sys.stdin.readline
+i = 1; n = int(inputs())
+while n > i:
+    i *= 2
+print(n*2-i)
