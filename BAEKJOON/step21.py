@@ -31,3 +31,17 @@ i = 1; n = int(inputs())
 while n > i:
     i *= 2
 print(n*2-i)
+
+# 11866
+import sys
+inputs = sys.stdin.readline
+n, k = map(int, inputs().split())
+num = [x for x in range(1, n+1)]; i = 0; res = []
+while num:
+    i += k - 1
+    if i >= len(num):
+        i = i % len(num)
+    res.append(str(num.pop(i)))
+    if num:
+        res.append(', ')
+print(f'<{"".join(res)}>')
