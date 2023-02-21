@@ -84,3 +84,7 @@ while True:
     count += 1
     if n == nn: break
 print(count)
+
+# 25314
+n = int(input())
+print('long '*(n//4) + 'int')
