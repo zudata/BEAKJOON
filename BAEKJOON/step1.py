@@ -66,3 +66,9 @@ for a in dog:
 sprout = ["         ,r\'\"7", "r`-_   ,\'  ,/", " \\. \". L_r\'", "   `~\\/", "      |", "      |"]
 for a in sprout:
     print(a, end = '\n')
+
+# 11382
+import sys
+inputs = sys.stdin.readline
+a, b, c = map(int, inputs().split())
+print(a+b+c)
