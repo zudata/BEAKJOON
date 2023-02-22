@@ -84,3 +84,14 @@ for _ in range(m):
     x = b[i-1]; y = b[j-1]
     b[j-1] = x; b[i-1] = y
 print(" ".join(b))
+
+# 10811
+import sys
+inputs = sys.stdin.readline
+n, m = map(int, inputs().split())
+b = [str(i+1) for i in range(n)]
+for _ in range(m):
+    i, j = map(int, inputs().split())
+    l = [b[x] for x in range(j-1, i-2, -1)]
+    b[i-1:j] = l
+print(" ".join(b))
