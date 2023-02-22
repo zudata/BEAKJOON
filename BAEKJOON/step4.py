@@ -62,3 +62,14 @@ for j in range(28):
     l.remove(int(input()))
 for k in list(l):
     print(k)
+
+# 10810
+import sys
+inputs = sys.stdin.readline
+n, m = map(int, inputs().split())
+b = ['0' for _ in range(n)]
+for _ in range(m):
+    i, j, k = map(int, inputs().split())
+    for x in range(i -1, j):
+        b[x] = str(k)
+print(" ".join(b))
