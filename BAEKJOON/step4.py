@@ -73,3 +73,14 @@ for _ in range(m):
     for x in range(i -1, j):
         b[x] = str(k)
 print(" ".join(b))
+
+# 10813
+import sys
+inputs = sys.stdin.readline
+n, m = map(int, inputs().split())
+b = [str(i+1) for i in range(n)]
+for _ in range(m):
+    i, j = map(int, inputs().split())
+    x = b[i-1]; y = b[j-1]
+    b[j-1] = x; b[i-1] = y
+print(" ".join(b))
