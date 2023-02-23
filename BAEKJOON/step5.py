@@ -41,3 +41,11 @@ import sys
 inputs = sys.stdin.readline
 s = inputs().strip()
 print(len(s))
+
+# 9086
+import sys
+inputs = sys.stdin.readline
+t = int(inputs())
+for _ in range(t):
+    s = inputs().strip()
+    print(f'{s[0]}{s[-1]}')
