@@ -49,3 +49,10 @@ t = int(inputs())
 for _ in range(t):
     s = inputs().strip()
     print(f'{s[0]}{s[-1]}')
+
+# 11718
+import sys
+inputs = sys.stdin.readline
+while True:
+    try: print(inputs().strip())
+    except EOFError: break
