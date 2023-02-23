@@ -35,3 +35,9 @@ for i in range(n):
         for k in range(10):
             boxs.add((x+j, y+k))
 print(len(boxs))
+
+# 2743
+import sys
+inputs = sys.stdin.readline
+s = inputs().strip()
+print(len(s))
