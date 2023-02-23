@@ -51,8 +51,8 @@ for _ in range(t):
     print(f'{s[0]}{s[-1]}')
 
 # 11718
-import sys
-inputs = sys.stdin.readline
 while True:
-    try: print(inputs().strip())
-    except EOFError: break
+    try:
+        print(input())
+    except EOFError:
+        break
