@@ -25,3 +25,12 @@ else:
             string.append(j)
         if int(string[1])*2 == int(string[0]) + int(string[2]): count += 1
 print(count)
+
+# 2444
+import sys
+inputs = sys.stdin.readline
+n = int(inputs())
+for i in range(n):
+    print(f'{" "*(n-i-1)}{"*"*(2*(i+1)-1)}')
+for i in range(n-2, -1, -1):
+    print(f'{" "*(n-i-1)}{"*"*(2*(i+1)-1)}')
