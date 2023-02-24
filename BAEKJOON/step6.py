@@ -34,3 +34,14 @@ for i in range(n):
     print(f'{" "*(n-i-1)}{"*"*(2*(i+1)-1)}')
 for i in range(n-2, -1, -1):
     print(f'{" "*(n-i-1)}{"*"*(2*(i+1)-1)}')
+
+# 10812
+import sys
+inputs = sys.stdin.readline
+n, m = map(int, inputs().split())
+b = [str(x+1) for x in range(n)]
+for _ in range(m):
+    i, j, k = map(int, inputs().split())
+    eb = b[k-1:j]+b[i-1:k-1]
+    b[i-1:j] = eb
+print(' '.join(b))
