@@ -45,3 +45,11 @@ for _ in range(m):
     eb = b[k-1:j]+b[i-1:k-1]
     b[i-1:j] = eb
 print(' '.join(b))
+
+# 10988
+import sys
+inputs = sys.stdin.readline
+s = inputs().strip()
+n = len(s); test = [s[i] for i in range(-1, -(n+1)//2, -1)]
+if s[:n//2] == ''.join(test): print(1)
+else: print(0)
