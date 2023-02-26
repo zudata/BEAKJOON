@@ -80,3 +80,17 @@ for i in range(n):
             if res[len(res)-1] == j: d += 1
     if d == len(s): c += 1
 print(c)
+
+# 10798
+import sys
+inputs = sys.stdin.readline
+s = [inputs().strip() for _ in range(5)]
+res = []
+for i in range(15):
+    word = ''
+    for j in range(5):
+        try:
+            word += s[j][i]
+        except IndexError: pass
+    res.append(word)
+print(''.join(res))
