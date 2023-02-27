@@ -93,3 +93,15 @@ for i in range(t):
                 print(int((n-1)/2-j), int((n-1)/2+j+1)); break
             elif ((n-1)/2+j in l) and ((n-1)/2-j+1 in l):
                 print(int((n-1)/2-j+1), int((n-1)/2+j)); break
+
+# 2501
+import sys
+inputs = sys.stdin.readline
+n, k = map(int, inputs().split())
+res = set()
+for i in range(1, n//2):
+    if n%i == 0:
+        res.add(i); res.add(n//i)
+res = sorted(list(res))
+try: print(res[k-1])
+except: print(0)
