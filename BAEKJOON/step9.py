@@ -105,3 +105,22 @@ for i in range(1, n//2):
 res = sorted(list(res))
 try: print(res[k-1])
 except: print(0)
+
+# 9506
+import sys
+inputs = sys.stdin.readline
+while True:
+    n = int(inputs())
+    if n == -1: break
+    else:
+        res = set()
+        for i in range(2, n//2):
+            if n%i == 0:
+                res.add(i); res.add(n//i)
+        res = sorted(list(res))
+        if sum(res)+1 == n:
+            print(f'{n} = 1', end = '')
+            for j in res:
+                print(f' + {j}', end = '')
+            print()
+        else: print(f'{n} is NOT perfect.')
