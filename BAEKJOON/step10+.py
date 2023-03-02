@@ -37,6 +37,6 @@ inputs = sys.stdin.readline
 a1, a2 = map(int, inputs().split())
 c = int(inputs())
 n = int(inputs())
-if a1*n+a2 <= c*n:
+if c >= a1 and a1*n+a2 <= c*n:
     print(1)
 else: print(0)
