@@ -53,3 +53,18 @@ for _ in range(n):
         try:
             print(l[-1])
         except: print(-1)
+
+# 1021
+import sys
+inputs = sys.stdin.readline
+n, m = map(int, inputs().split())
+nl = list(map(int, inputs().split()))
+l = list(range(1, n+1)); res = 0
+for i in nl:
+    while l[0] != i:
+        li = l.index(i)
+        if li <= n/2: res += li
+        else: res += n-li
+        l = l[li:]+l[:li]
+    l = l[1:]; n = len(l)
+print(res)
