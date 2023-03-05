@@ -68,3 +68,27 @@ for i in nl:
         l = l[li:]+l[:li]
     l = l[1:]; n = len(l)
 print(res)
+
+# 5430
+import sys
+inputs = sys.stdin.readline
+t = int(inputs())
+for _ in range(t):
+    p = inputs().strip('\n')
+    n = int(inputs())
+    arr = inputs()[1:-2].split(',')
+    rl = [1, 0]; r = 0; x = 0; y = n
+    for pp in p:
+        if pp == 'R': r = rl[r]
+        else:
+            if r == 0: x += 1
+            else: y -= 1
+    if r == 0: a, z, s = x, y, 1
+    else: a, z, s = y-1, x-1, -1
+    if x > y: print('error')
+    else:
+        print('[', end = '')
+        for i in range(a, z, s):
+            if i == a: print(f'{arr[a]}', end = '')
+            else: print(f',{arr[i]}', end = '')
+        print(']')
