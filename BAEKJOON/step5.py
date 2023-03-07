@@ -56,3 +56,8 @@ while True:
         print(input())
     except EOFError:
         break
+
+# 27866
+s = input()
+i = int(input())
+print(s[i-1])
