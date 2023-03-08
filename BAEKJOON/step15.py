@@ -162,3 +162,19 @@ up2 = div(n, 2); up5 = div(n, 5)
 un2 = div(m, 2) + div(n-m, 2)
 un5 = div(m, 5) + div(n-m, 5)
 print(min(up2 - un2, up5 - un5))
+
+# 13241
+import sys
+inputs = sys.stdin.readline
+a, b = map(int, inputs().split())
+if a == b: print(a)
+else:
+    check = False; res = a*b; tmp = a
+    while True:
+        tmp += a
+        if tmp % b == 0:
+            check = True
+            break
+        if tmp == res: break
+    if check == False: print(res)
+    else: print(tmp)
