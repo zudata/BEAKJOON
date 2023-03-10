@@ -178,3 +178,15 @@ else:
         if tmp == res: break
     if check == False: print(res)
     else: print(tmp)
+
+# 1735
+import sys
+inputs = sys.stdin.readline
+a1, b1 = map(int, inputs().split())
+a2, b2 = map(int, inputs().split())
+c = a1*b2 + b1*a2; d = b1*b2
+a = max(c, d); b = min(c, d)
+while a % b != 0:
+    ans = a%b; a = b; b = ans
+if b == 1: print(f'{c} {d}')
+else: print(f'{c//b} {d//b}')
