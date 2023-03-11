@@ -190,3 +190,21 @@ while a % b != 0:
     ans = a%b; a = b; b = ans
 if b == 1: print(f'{c} {d}')
 else: print(f'{c//b} {d//b}')
+
+# 2485
+import sys
+inputs = sys.stdin.readline
+def fungcd(a, b):
+    while b != 0:
+        a, b = b, a%b
+    return a
+n = int(inputs())
+gaps = []; tree = [int(inputs()) for _ in range(n)]
+for i in range(1, n):
+    gaps.append(tree[i] - tree[i-1])
+gset = list(set(gaps)); gcd = gset[0]; res = 0
+for i in range(1, len(gset)):
+    gcd = fungcd(gcd, gset[i])
+for gap in gaps:
+    res += gap//gcd - 1
+print(res)
