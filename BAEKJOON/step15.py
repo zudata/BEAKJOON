@@ -208,3 +208,19 @@ for i in range(1, len(gset)):
 for gap in gaps:
     res += gap//gcd - 1
 print(res)
+
+# 4134
+import sys
+inputs = sys.stdin.readline
+def check(x):
+    if x == 0 or x == 1: return False
+    for i in range(2, int(x**0.5) + 1):
+        if x%i == 0: return False
+    return True
+for _ in range(int(inputs())):
+    n = int(inputs())
+    while True:
+        if check(n):
+            print(n)
+            break
+        n += 1
