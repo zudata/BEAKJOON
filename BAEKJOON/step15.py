@@ -224,3 +224,22 @@ for _ in range(int(inputs())):
             print(n)
             break
         n += 1
+
+# 17103
+import sys
+inputs = sys.stdin.readline
+t = int(inputs())
+m = 1000000; arr = [1 for _ in range(m+1)]; l = []
+for i in range(2, m + 1):
+    if arr[i]:
+        l.append(i)
+        for j in range(i*2, m+1, i):
+            if j > m: break
+            arr[j] = 0
+for _ in range(t):
+    n = int(inputs())
+    res = 0
+    for i in l:
+        if n - i < i: break
+        if arr[n-i]: res += 1
+    print(res)
