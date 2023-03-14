@@ -39,3 +39,25 @@ def paper(x, y, n):
         return q1
     return '(' + q1 + q2 + q3 + q4 + ')'
 print(paper(0, 0, n))
+
+# 1780
+import sys
+inputs = sys.stdin.readline
+n = int(inputs())
+arr = [list(map(int, inputs().split())) for _ in range(n)]
+res1, res2, res3 = 0, 0, 0
+def check(x, y, n):
+    global res1, res2, res3
+    num = arr[x][y]
+    for i in range(x, x+n):
+        for j in range(y, y+n):
+            if arr[i][j] != num :
+                for k in range(3):
+                    for l in range(3):
+                        check(x+k*n//3, y+l*n//3, n//3)
+                return
+    if num == -1: res1 += 1
+    elif num == 0: res2 += 1
+    else: res3 += 1
+check(0, 0, n)
+print(res1, res2, res3, sep = '\n')
