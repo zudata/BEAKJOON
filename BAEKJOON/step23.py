@@ -61,3 +61,14 @@ def check(x, y, n):
     else: res3 += 1
 check(0, 0, n)
 print(res1, res2, res3, sep = '\n')
+
+# 1629
+import sys
+inputs = sys.stdin.readline
+a, b, c = map(int, inputs().split())
+def mul(a, b, c):
+    if b == 1: return a%c
+    m = mul(a, b//2, c)
+    if not b%2: return (m*m)%c
+    else: return (m*m*a)%c
+print(mul(a, b, c))
