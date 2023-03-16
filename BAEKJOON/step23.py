@@ -72,3 +72,19 @@ def mul(a, b, c):
     if not b%2: return (m*m)%c
     else: return (m*m*a)%c
 print(mul(a, b, c))
+
+# 11401
+import sys
+inputs = sys.stdin.readline
+p = 1000000007
+n, k = map(int, inputs().split())
+def fact(num, mod):
+    res = 1
+    for i in range(2, num+1):
+        res = res * i % p
+    return res
+def pow(num, p, mod):
+    if p == 1: return num % mod
+    if p % 2: return ((pow(num,p//2,mod) ** 2) * num) % mod
+    else: return (pow(num,p//2,mod) ** 2) % mod
+print(fact(n, p) * pow((fact(k, p) * fact(n-k, p)), p-2, p) % p)
