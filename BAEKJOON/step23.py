@@ -88,3 +88,19 @@ def pow(num, p, mod):
     if p % 2: return ((pow(num,p//2,mod) ** 2) * num) % mod
     else: return (pow(num,p//2,mod) ** 2) % mod
 print(fact(n, p) * pow((fact(k, p) * fact(n-k, p)), p-2, p) % p)
+
+# 2740
+import sys
+inputs = sys.stdin.readline
+n, m = map(int, inputs().split())
+a = [list(map(int, inputs().split())) for _ in range(n)]
+m, k = map(int, inputs().split())
+b = [list(map(int, inputs().split())) for _ in range(m)]
+for i in range(n):
+    res = []
+    for j in range(k):
+        x = 0
+        for l in range(m):
+            x += a[i][l]*b[l][j]
+        res.append(x)
+    print(*res)
