@@ -126,5 +126,7 @@ def div(n, b, mat):
 n, b = map(int, inputs().split())
 arr = [list(map(int, inputs().split())) for _ in range(n)]
 res = div(n, b, arr)
-for i in range(n):
-    print(*res[i])
+for i in res:
+    for j in i:
+        print(j%1000, end = ' ')
+    print()
