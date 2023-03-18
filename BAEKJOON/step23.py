@@ -104,3 +104,27 @@ for i in range(n):
             x += a[i][l]*b[l][j]
         res.append(x)
     print(*res)
+
+# 10830
+import sys
+inputs = sys.stdin.readline
+def mul(n, mat1, mat2):
+    res = [[0 for __ in range(n)] for _ in range(n)]
+    for i in range(n):
+        for j in range(n):
+            for k in range(n):
+                res[i][j] += mat1[i][k]*mat2[k][j]
+            res[i][j] %= 1000
+    return res
+def div(n, b, mat):
+    if b == 1: return mat
+    elif b == 2: return mul(n, mat, mat)
+    else:
+        tmp = div(n, b//2, mat)
+        if b%2 == 0: return mul(n, tmp, tmp)
+        else: return mul(n, mul(n, tmp, tmp), mat)
+n, b = map(int, inputs().split())
+arr = [list(map(int, inputs().split())) for _ in range(n)]
+res = div(n, b, arr)
+for i in range(n):
+    print(*res[i])
