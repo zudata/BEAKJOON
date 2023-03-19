@@ -124,3 +124,10 @@ while True:
                 print(f' + {j}', end = '')
             print()
         else: print(f'{n} is NOT perfect.')
+
+# 27323
+import sys
+inputs = sys.stdin.readline
+a = int(inputs())
+b = int(inputs())
+print(int(a*b))
