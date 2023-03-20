@@ -131,3 +131,9 @@ inputs = sys.stdin.readline
 a = int(inputs())
 b = int(inputs())
 print(int(a*b))
+
+# 15894
+import sys
+inputs = sys.stdin.readline
+n = int(inputs())
+print(n*4)
