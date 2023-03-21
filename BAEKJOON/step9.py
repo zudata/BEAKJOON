@@ -137,3 +137,14 @@ import sys
 inputs = sys.stdin.readline
 n = int(inputs())
 print(n*4)
+
+# 9063
+import sys
+inputs = sys.stdin.readline
+n = int(inputs())
+x = []; y = []
+for _ in range(n):
+    a, b = map(int, inputs().split())
+    x.append(a); y.append(b)
+if n == 1: print(0)
+else: print((max(x)-min(x))*(max(y)-min(y)))
