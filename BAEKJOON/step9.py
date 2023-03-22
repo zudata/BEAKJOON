@@ -148,3 +148,14 @@ for _ in range(n):
     x.append(a); y.append(b)
 if n == 1: print(0)
 else: print((max(x)-min(x))*(max(y)-min(y)))
+
+# 10101
+import sys
+inputs = sys.stdin.readline
+tr = [int(inputs()) for _ in range(3)]
+if sum(tr) == 180:
+    l = len(set(tr))
+    if l == 1: print("Equilateral")
+    elif l == 2: print("Isosceles")
+    else: print("Scalene")
+else: print("Error")
