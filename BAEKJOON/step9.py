@@ -159,3 +159,15 @@ if sum(tr) == 180:
     elif l == 2: print("Isosceles")
     else: print("Scalene")
 else: print("Error")
+
+# 5073
+import sys
+inputs = sys.stdin.readline
+while True:
+    t = list(map(int, inputs().split()))
+    if t == [0, 0, 0]: break
+    l = len(set(t)); m = max(t); t.remove(max(t))
+    if m >= sum(t): print("Invalid")
+    elif l == 1: print("Equilateral")
+    elif l == 2: print("Isosceles")
+    else: print("Scalene")
