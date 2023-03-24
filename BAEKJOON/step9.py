@@ -171,3 +171,11 @@ while True:
     elif l == 1: print("Equilateral")
     elif l == 2: print("Isosceles")
     else: print("Scalene")
+
+# 14215
+import sys
+inputs = sys.stdin.readline
+t = list(map(int, inputs().split()))
+m = max(t); t.remove(m)
+if sum(t) > m: print(sum(t) + m)
+else: print(2*sum(t) - 1)
