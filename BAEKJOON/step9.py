@@ -179,3 +179,11 @@ t = list(map(int, inputs().split()))
 m = max(t); t.remove(m)
 if sum(t) > m: print(sum(t) + m)
 else: print(2*sum(t) - 1)
+
+# 19532
+import sys
+inputs = sys.stdin.readline
+a, b, c, d, e, f = map(int, inputs().split())
+x = int((c*e-f*b)/(a*e-d*b))
+y = int((c-a*x)/b)
+print(x, y, sep = ' ')
