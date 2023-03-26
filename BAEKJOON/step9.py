@@ -184,6 +184,6 @@ else: print(2*sum(t) - 1)
 import sys
 inputs = sys.stdin.readline
 a, b, c, d, e, f = map(int, inputs().split())
-x = int((c*e-f*b)/(a*e-d*b))
-y = int((c-a*x)/b)
+x = (c*e - b*f) // (a*e - b*d)
+y = (c*d - a*f) // (b*d - a*e)
 print(x, y, sep = ' ')

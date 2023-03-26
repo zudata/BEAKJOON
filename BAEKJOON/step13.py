@@ -82,3 +82,9 @@ for i in range(n):
         word = txt[i:i+j]
         if word != '': words.add(word)
 print(len(words))
+
+# 13909
+import sys
+inputs = sys.stdin.readline
+n = int(inputs())
+print(int(n**0.5))
