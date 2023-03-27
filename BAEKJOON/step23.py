@@ -130,3 +130,26 @@ for i in res:
     for j in i:
         print(j%1000, end = ' ')
     print()
+
+# 11444
+import sys
+inputs = sys.stdin.readline
+n = int(inputs())
+def mat(a, b):
+    res = [[0, 0], [0, 0]]
+    for i in range(2):
+        for j in range(2):
+            for k in range(2):
+                res[i][j] += a[i][k] * b[k][j]
+            res[i][j]%=1000000007
+    return res
+def fibo(n):
+    a = [[1,1],[1,0]]
+    if n == 1:
+        return a
+    m = fibo(n//2)
+    if n % 2:
+        return mat(mat(m, m), a)
+    else:
+        return mat(m, m)
+print(fibo(n)[1][0])
