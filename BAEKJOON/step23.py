@@ -153,3 +153,18 @@ def fibo(n):
     else:
         return mat(m, m)
 print(fibo(n)[1][0])
+
+# 6549
+import sys
+inputs = sys.stdin.readline
+while True:
+    t = [0]; res = 0
+    n, *h = list(map(int, inputs().split()))
+    if n == 0: break
+    h.insert(0, 0); h += [0]
+    for i in range(1, n+2):
+        while t and h[t[-1]] > h[i]:
+            x = t.pop()
+            res = max(res, (i-1-t[-1]) * h[x])
+        t.append(i)
+    print(res)
