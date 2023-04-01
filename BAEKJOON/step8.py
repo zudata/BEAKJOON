@@ -91,3 +91,14 @@ while n != 0:
     else: res += str(n % b)
     n //= b
 print(res[::-1])
+
+# 2720
+import sys
+inputs = sys.stdin.readline
+for _ in range(int(inputs())):
+    c = int(inputs())
+    q = c//25
+    d = (c%25)//10
+    n = ((c%25)%10)//5
+    p = ((c%25)%10)%5
+    print(q, d, n, p)
