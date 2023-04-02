@@ -76,3 +76,15 @@ for i in range(t):
         if (d1 < r and d2 < r) or (d1 > r and d2 > r): pass
         else: count += 1
     print(count)
+
+# 7785
+import sys
+inputs = sys.stdin.readline
+n = int(inputs())
+l = set()
+for _ in range(n):
+    name, y = inputs().split()
+    if y == 'enter': l.add(name)
+    else: l.remove(name)
+l = sorted(l, reverse = True)
+print(*l, sep = '\n')
