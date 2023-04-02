@@ -102,3 +102,6 @@ for _ in range(int(inputs())):
     n = ((c%25)%10)//5
     p = ((c%25)%10)%5
     print(q, d, n, p)
+
+# 2903
+print((2**int(input())+1)**2)
