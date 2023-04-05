@@ -22,3 +22,18 @@ while t <= res:
     if ln >= n: t = mid + 1
     else: res = mid - 1
 print(res)
+
+# 2805
+import sys
+inputs = sys.stdin.readline
+n, m = map(int, inputs().split())
+b = list(map(int, inputs().split()))
+t, res = 1, max(b)
+while t <= res:
+    mid = (t + res) // 2
+    ln = 0
+    for i in b:
+        if i >= mid: ln += i - mid
+    if ln >= m: t = mid + 1
+    else: res = mid - 1
+print(res)
