@@ -37,3 +37,20 @@ while t <= res:
     if ln >= m: t = mid + 1
     else: res = mid - 1
 print(res)
+
+# 2110
+import sys
+inputs = sys.stdin.readline
+n, c = map(int, inputs().split())
+l = sorted([int(inputs()) for _ in range(n)])
+start = 1; end = l[n-1] - l[0]
+while start <= end:
+    cnt = 1; cur = l[0]
+    mid = (start + end) // 2
+    for i in l:
+        if cur + mid <= i:
+            cnt += 1; cur = i
+    if cnt >= c:
+        start = mid + 1; res = mid
+    else: end = mid - 1
+print(res)
