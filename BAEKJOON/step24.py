@@ -67,3 +67,22 @@ while start <= end:
         res = mid; end = mid-1
     else: start = mid+1
 print(res)
+
+# 12015
+import sys
+inputs = sys.stdin.readline
+def bin(x):
+    left = 0; right = len(res) - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if res[mid] >= x: right = mid - 1            
+        else: left = mid + 1
+    return right + 1
+n = int(inputs())
+A = list(map(int, inputs().split()))
+res = [0]
+for a in A:
+    if res[-1] < a:
+        res.append(a)
+    else: res[bin(a)] = a
+print(len(res) - 1)
