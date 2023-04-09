@@ -105,3 +105,11 @@ for i in range(n-1):
     c = c*2 + 1
 print(c)
 hanoi(n, 1, 2, 3)
+
+# 27433
+def fact(n):
+    res = 1
+    if n > 0 :
+        res = n*fact(n-1)
+    return res
+print(fact(int(input())))
