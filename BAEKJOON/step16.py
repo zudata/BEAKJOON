@@ -178,5 +178,11 @@ def Recur(n,start):
         if Cnt == End:
             print(Min)
             exit(0)
-
 Recur(0,0)
+
+# 15439
+n = int(input())
+print(n*n-n)
+
+# 24723
+print(2**int(input()))
