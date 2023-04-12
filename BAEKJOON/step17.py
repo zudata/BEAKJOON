@@ -221,3 +221,16 @@ for i in range(n):
     for j in range(k, w-1, -1):
         dp[j] = max(dp[j], dp[j-w]+v)
 print(dp[k])
+
+# 25192
+import sys
+inputs = sys.stdin.readline
+n = int(inputs())
+l = [inputs().strip() for _ in range(n)]
+cnt = 0; res = 0; arr = [[] for _ in range(l.count('ENTER'))]; l.remove('ENTER')
+for i in l:
+    if i == 'ENTER': cnt += 1
+    else: arr[cnt].append(i)
+for j in range(len(arr)):
+    res += len(set(arr[j]))
+print(res)
