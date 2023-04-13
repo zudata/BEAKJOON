@@ -234,3 +234,15 @@ for i in l:
 for j in range(len(arr)):
     res += len(set(arr[j]))
 print(res)
+
+# 26069
+import sys
+inputs = sys.stdin.readline
+n = int(inputs())
+dance = {'ChongChong'}
+for _ in range(n):
+    a, b = inputs().split()
+    if a in dance: dance.add(b)
+    elif b in dance: dance.add(a)
+    else: pass
+print(len(dance))
