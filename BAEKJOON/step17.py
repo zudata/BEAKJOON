@@ -246,3 +246,18 @@ for _ in range(n):
     elif b in dance: dance.add(a)
     else: pass
 print(len(dance))
+
+# 20920
+import sys
+inputs = sys.stdin.readline
+n, m = map(int, inputs().split())
+word_dict = dict()
+for _ in range(n):
+    word = inputs().strip()
+    if len(word) < m: pass
+    else:
+        if word in word_dict: word_dict[word] += 1
+        else: word_dict[word] = 1
+word_dict = sorted(word_dict.items(), key = lambda x: (-x[1], -len(x[0]), x[0]))
+for i in word_dict:
+    print(i[0])
