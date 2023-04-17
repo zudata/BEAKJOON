@@ -26,3 +26,15 @@ for _ in range(n):
         if heap: print(heapq.heappop(heap))
         else: print(0)
     else: heapq.heappush(heap, cmd)
+
+# 11286
+import sys, heapq
+inputs = sys.stdin.readline
+n = int(inputs())
+heap = []
+for _ in range(n):
+    x = int(inputs())
+    if x != 0: heapq.heappush(heap, (abs(x), x))
+    else:
+        if not heap: print(0)
+        else: print(heapq.heappop(heap)[1])
