@@ -49,3 +49,28 @@ def dfs(start):
     return route[x][y]
 dfs([0,0])
 print(route[0][0])
+
+# 2629
+import sys
+inputs = sys.stdin.readline
+n = int(inputs())
+l1 = list(map(int, inputs().split()))
+m = int(inputs())
+l2 = list(map(int, inputs().split()))
+arr = [[0 for _ in range(15001)] for _ in range(n+1)]; res = []
+def weight(x, y, i):
+    global n, l1, arr, res
+    d = abs(x - y)
+    if d not in res:
+        res.append(d)
+    if i == n:
+        return 0
+    if arr[i][d] == 0:
+        weight(x + l1[i], y, i+1)
+        weight(x, y + l1[i], i+1)
+        weight(x, y, i+1)
+        arr[i][d] = 1
+weight(0, 0, 0)
+for i in range(m):
+    if l2[i] in res: print('Y', end=' ')
+    else: print('N', end=' ')
