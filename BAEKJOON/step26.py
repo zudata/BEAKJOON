@@ -85,3 +85,18 @@ for i in l:
     for j in range(i, k+1):
         dp[j] += dp[j-i]
 print(dp[k])
+
+# 7579
+import sys
+inputs = sys.stdin.readline
+n, m = map(int, inputs().split())
+memory = [0] + list(map(int, inputs().split()))
+cost = [0] + list(map(int, inputs().split()))
+dp = [[0 for _ in range(sum(cost) + 1)] for _ in range(n+1)]
+res = 10000001
+for i in range(1, n+1):
+    for j in range(sum(cost)+1):
+        if cost[i] > j: dp[i][j] = dp[i-1][j]
+        else: dp[i][j] = max(dp[i-1][j-cost[i]] + memory[i], dp[i-1][j])
+        if dp[i][j] >= m: res = min(j, res)
+print(res)
