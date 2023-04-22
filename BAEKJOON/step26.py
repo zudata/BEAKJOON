@@ -74,3 +74,14 @@ weight(0, 0, 0)
 for i in range(m):
     if l2[i] in res: print('Y', end=' ')
     else: print('N', end=' ')
+
+# 2293
+import sys
+inputs = sys.stdin.readline
+n, k = map(int, inputs().split())
+l = [int(inputs()) for _ in range(n)]
+dp = [1] + [0]*(k)
+for i in l:
+    for j in range(i, k+1):
+        dp[j] += dp[j-i]
+print(dp[k])
