@@ -36,3 +36,17 @@ for i in range(1, n):
         res[stack.pop()] = a[i]
     stack.append(i)
 print(*res)
+
+# 1725
+import sys
+inputs = sys.stdin.readline
+n = int(inputs())
+res = 0; graph = [int(inputs()) for _ in range(n)] + [0]
+stack = [(0, graph[0])]
+for i in range(1, n+1):
+    x = i
+    while stack and stack[-1][1] > graph[i]:
+        x, h = stack.pop()
+        res = max(res, (i - x) * h)
+    stack.append((x, graph[i]))
+print(res)
