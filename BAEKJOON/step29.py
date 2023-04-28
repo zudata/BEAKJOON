@@ -50,3 +50,22 @@ for i in range(1, n+1):
         res = max(res, (i - x) * h)
     stack.append((x, graph[i]))
 print(res)
+
+# 3015
+import sys
+inputs = sys.stdin.readline
+n = int(inputs())
+res = 0; stack = []
+for _ in range(n):
+    h = int(inputs())
+    while stack and stack[-1][0] < h: res += stack.pop()[1]
+    if stack and stack[-1][0] == h:
+        cnt = stack.pop()[1]
+        res += cnt
+        if len(stack) != 0:
+            res += 1
+        stack.append((h, cnt + 1))
+    else:
+        if len(stack) != 0: res += 1
+        stack.append((h, 1))
+print(res)
