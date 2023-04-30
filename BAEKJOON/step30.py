@@ -19,3 +19,25 @@ algorithm(r)
 for idx, node in zip(range(1, len(path)+1), path):
     res[node] = idx
 print(*res[1:], sep = '\n')
+
+# 24480
+import sys
+inputs = sys.stdin.readline
+sys.setrecursionlimit(10**6)
+n, m, r = map(int, inputs().split())
+graph = [[] for _ in range(n+1)]
+res = [0]*(n+1); tmp = 1
+for _ in range(m):
+    u, v = map(int, inputs().split())
+    graph[u].append(v); graph[v].append(u)
+for i in graph:
+    i.sort(reverse = True)
+def algorithm(v):
+    global tmp
+    res[v] = tmp
+    for i in graph[v]:
+        if res[i]: continue
+        tmp += 1
+        algorithm(i)
+algorithm(r)
+print(*res[1:], sep = '\n')
