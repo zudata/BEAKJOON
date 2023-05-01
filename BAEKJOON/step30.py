@@ -41,3 +41,29 @@ def algorithm(v):
         algorithm(i)
 algorithm(r)
 print(*res[1:], sep = '\n')
+
+# 24444
+import sys
+from collections import deque
+inputs = sys.stdin.readline
+n, m, r = map(int, inputs().split())
+graph = [[] for _ in range(n+1)]
+res = [0]*(n+1)
+for _ in range(m):
+    u, v = map(int, inputs().split())
+    graph[u].append(v); graph[v].append(u)
+for i in graph: 
+    i.sort()
+def algorithm(v):
+    cnt = 1
+    queue = deque([v])
+    res[v] = cnt 
+    while queue:
+        v = queue.popleft()
+        for i in graph[v]:
+            if res[i] == 0:
+                cnt += 1
+                queue.append(i)
+                res[i] = cnt 
+algorithm(r)
+print(*res[1:], sep = '\n')
