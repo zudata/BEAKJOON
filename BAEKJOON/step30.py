@@ -93,3 +93,26 @@ def algorithm(v):
                 res[i] = cnt 
 algorithm(r)
 print(*res[1:], sep = '\n')
+
+# 2606
+import sys
+from collections import deque
+inputs = sys.stdin.readline
+n = int(inputs())
+m = int(inputs())
+l = [[] for _ in range(n+1)]
+res = [0]*(n+1)
+for _ in range(m):
+    a, b = map(int, inputs().split())
+    l[a].append(b); l[b].append(a)
+def algorithm(v):
+    queue = deque([v])
+    res[v] = 1
+    while queue:
+        t = queue.popleft()
+        for i in l[t]:
+            if not res[i]:
+                queue.append(i)
+                res[i] = 1
+algorithm(1)
+print(sum(res) - 1)
