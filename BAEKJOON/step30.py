@@ -116,3 +116,37 @@ def algorithm(v):
                 res[i] = 1
 algorithm(1)
 print(sum(res) - 1)
+
+# 1260
+import sys
+from collections import deque
+inputs = sys.stdin.readline
+n, m, v = map(int, inputs().split())
+l = [[] for _ in range(n)]
+for _ in range(m):
+    x, y = map(int, inputs().split())
+    l[x-1].append(y-1)
+    l[y-1].append(x-1)
+for d in l:
+    d.sort(reverse = True)
+def dfs(v):
+    seen = [0]*n
+    stack = [v]
+    while stack:
+        v = stack.pop()
+        if not seen[v]:
+            seen[v] = 1
+            print(v+1, end=' ')
+            stack += l[v]
+def bfs(v):
+    seen = [0]*n
+    temp = deque([v])
+    seen[v] = 1
+    while temp:
+        v = temp.popleft()
+        print(v+1, end = ' ')
+        for d in reversed(l[v]):
+            if not seen[d]:
+                temp.append(d)
+                seen[d] = 1
+dfs(v-1); print(); bfs(v-1)
