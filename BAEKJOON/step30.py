@@ -140,13 +140,43 @@ def dfs(v):
             stack += l[v]
 def bfs(v):
     seen = [0]*n
-    temp = deque([v])
+    tmp = deque([v])
     seen[v] = 1
-    while temp:
-        v = temp.popleft()
+    while tmp:
+        v = tmp.popleft()
         print(v+1, end = ' ')
         for d in reversed(l[v]):
             if not seen[d]:
-                temp.append(d)
+                tmp.append(d)
                 seen[d] = 1
 dfs(v-1); print(); bfs(v-1)
+
+# 2667
+import sys
+from collections import deque
+inputs = sys.stdin.readline
+n = int(inputs())
+arr = [inputs().strip() for _ in range(n)]
+visited = [[0]*n for _ in range(n)]
+res = 0; l = []
+dx = [0, 0, -1, 1]
+dy = [-1, 1, 0, 0]
+def dfs(i, j):
+    global res, tmp
+    visited[i][j] = 1
+    for d in range(4):
+        x = i + dx[d]
+        y = j + dy[d]
+        if x >= 0 and x < n and y >= 0 and y < n:
+            if arr[x][y] == '1' and visited[x][y] == 0:
+                tmp += 1
+                dfs(x, y)
+    return
+for i in range(n):
+    for j in range(n):
+        tmp = 1
+        if arr[i][j] == '1' and visited[i][j] == 0:
+            dfs(i,j)
+            res += 1
+            l.append(tmp)
+print(res); l.sort(); print(*l, sep = '\n')
